@@ -1,18 +1,18 @@
-from typing import List
-
-
-def maximum_subarray(array: List[int]) -> int:
-    """
-    Finds the subarray with the largest sum and returns its sum
-
-    Args:
-        array (List[int]): array
-
-    Returns:
-        int: sum
-    """
-
-    return 0
-
-
-# https://leetcode.com/problems/maximum-subarray/
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        current_sum = 0
+        current_maximum = 0
+        if max(nums) <= 0:
+            return max(nums)
+        for i in range(len(nums)):
+            if nums[i] >= 0:
+                current_sum += nums[i]
+            elif current_sum + nums[i] > 0:
+                if current_sum > current_maximum:
+                    current_maximum = current_sum
+                current_sum += nums[i]
+            else:
+                if current_sum > current_maximum:
+                    current_maximum = current_sum
+                current_sum = 0
+        return max(current_sum, current_maximum)
