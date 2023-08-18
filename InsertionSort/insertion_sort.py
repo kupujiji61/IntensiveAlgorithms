@@ -1,4 +1,4 @@
-from typing import List
+ч    from typing import List
 
 
 def insertion_sort(array: List[int]) -> List[int]:
